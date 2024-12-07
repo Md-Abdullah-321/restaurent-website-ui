@@ -88,7 +88,7 @@ export default function FoodCarousel({ heading, headingPosition, foodItems }: {
           ))}
         </CarouselContent>
 
-        <CarouselNext className="absolute right-10 top-1/2 transform md:-translate-y-1/2 z-10 bg-white">
+        <CarouselNext className="absolute right-0 sm:right-10 top-1/2 transform md:-translate-y-1/2 z-10 bg-white">
           ❯
         </CarouselNext>
       </Carousel>

@@ -19,7 +19,6 @@ export default function FoodItem() {
 
   useEffect(() => {
     if (slug) {
-      // Fetch item and related foods
       const fetchedItem = getItemById(parseInt(slug as string));
       if (fetchedItem) {
         setItem(fetchedItem);
@@ -36,12 +35,8 @@ export default function FoodItem() {
     return <p className="text-center text-gray-500">Loading...</p>;
   }
 
-  console.log(item, relatedFoods);
-  
-
   return (
     <div className="container mx-auto my-10">
-      {/* Back Button */}
       <div
         className="flex items-center gap-2 text-red-500 cursor-pointer hover:text-red-600"
         onClick={() => router.back()}
@@ -64,7 +59,7 @@ export default function FoodItem() {
         </div>
 
         {/* Right Details Section */}
-        <div className="w-full md:w-6/12">
+        <div className="w-full md:w-6/12 p-4 sm:p-0">
           {/* Food Name */}
           <h2 className="text-3xl font-semibold text-gray-700">{item.name}</h2>
 
