@@ -16,7 +16,6 @@ import {
 import { FoodTypes } from "@/db/Food";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
@@ -70,12 +69,10 @@ export default function FoodCarousel({ heading, headingPosition, foodItems }: {
               style={{ flex: `0 0 ${itemWidth}` }} 
             >
               {/* Food Content */}
-              <Image 
-                src={food.image}
+              <img 
+                src={food.image.src}
                 alt={food.name}
-                width={1000}
-                height={1000}
-                className="w-full h-60 object-contain mb-2 rounded-md"
+                className="w-full h-60 object-cover mb-2 rounded-md"
               />
               <p className="text-sm text-[#f39c12]"><span style={{"fontSize":"125%", "color": "#f39c12"}}>★</span>{food.rating}/5</p>
               <Link href={`/item/${food.id}`} className="text-lg font-semibold text-gray-800 my-4 hover:underline">

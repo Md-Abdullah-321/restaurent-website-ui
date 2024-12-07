@@ -5,7 +5,12 @@
  * Date: 07/12/2024
  */
 
-import thumbnail from "@/public/hero_section_right_image.png";
+import foodImageOne from "@/public/foods/food-1.png";
+import foodImageTwo from "@/public/foods/food-2.png";
+import foodImageThree from "@/public/foods/food-3.png";
+import foodImageFour from "@/public/foods/food-4.png";
+import foodImageFive from "@/public/foods/food-5.png";
+import foodImageSix from "@/public/foods/food-6.png";
 import { StaticImageData } from "next/image";
 
 export interface FoodTypes {
@@ -24,7 +29,7 @@ export const FoodItems: FoodTypes[] = [
   {
     id: 1,
     name: "Grilled Chicken Salad",
-    image: thumbnail,
+    image: foodImageOne,
     rating: 4.5,
     protein: 25,
     carbs: 10,
@@ -37,7 +42,7 @@ export const FoodItems: FoodTypes[] = [
   {
     id: 2,
     name: "Quinoa Bowl",
-    image: thumbnail,
+    image: foodImageTwo,
     rating: 4.7,
     protein: 15,
     carbs: 30,
@@ -50,7 +55,7 @@ export const FoodItems: FoodTypes[] = [
   {
     id: 3,
     name: "Avocado Toast",
-    image: thumbnail,
+    image: foodImageThree,
     rating: 4.2,
     protein: 7,
     carbs: 20,
@@ -63,7 +68,7 @@ export const FoodItems: FoodTypes[] = [
   {
     id: 4,
     name: "Grilled Salmon",
-    image: thumbnail,
+    image: foodImageFour,
     rating: 4.8,
     protein: 30,
     carbs: 5,
@@ -76,7 +81,7 @@ export const FoodItems: FoodTypes[] = [
   {
     id: 5,
     name: "Vegan Buddha Bowl",
-    image: thumbnail,
+    image: foodImageFive,
     rating: 4.6,
     protein: 12,
     carbs: 35,
@@ -89,7 +94,7 @@ export const FoodItems: FoodTypes[] = [
   {
     id: 6,
     name: "Chicken Wrap",
-    image: thumbnail,
+    image: foodImageSix,
     rating: 4.3,
     protein: 20,
     carbs: 25,
