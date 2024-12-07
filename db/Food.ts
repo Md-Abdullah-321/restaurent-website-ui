@@ -6,7 +6,21 @@
  */
 
 import thumbnail from "@/public/hero_section_right_image.png";
-export const FoodItems = [
+import { StaticImageData } from "next/image";
+
+export interface FoodTypes {
+  id: number;
+  name: string;
+  image: StaticImageData;
+  rating: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+  price: number;
+  description: string;
+  relatedFoods: number[];
+}
+export const FoodItems: FoodTypes[] = [
   {
     id: 1,
     name: "Grilled Chicken Salad",

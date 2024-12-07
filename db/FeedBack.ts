@@ -5,7 +5,15 @@
  * Date: 07/12/2024
  */
 
-export const Feedbacks = [
+export interface FeedbackTypes {
+  id: number;
+  userImage: string;
+  name: string;
+  designation: string;
+  message: string;
+}
+
+export const Feedbacks: FeedbackTypes[] = [
   {
     id: 1,
     userImage: "https://randomuser.me/api/portraits/men/10.jpg",

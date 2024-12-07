@@ -13,12 +13,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { FoodTypes } from "@/db/Food";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 
-export default function FoodCarousel({ heading, headingPosition, foodItems }: any) {
+export default function FoodCarousel({ heading, headingPosition, foodItems }: {
+  heading: string;
+  headingPosition: string;
+  foodItems: FoodTypes[];
+}) {
   const [itemWidth, setItemWidth] = useState("100%"); 
 
   // Update item width based on screen size
@@ -53,7 +58,7 @@ export default function FoodCarousel({ heading, headingPosition, foodItems }: an
         </CarouselPrevious>
 
         <CarouselContent className="flex gap-4 transition-transform ml-0 sm:ml-10">
-          {foodItems.map((food: any, index: number) => (
+          {foodItems.map((food: FoodTypes, index: number) => (
             <CarouselItem
               key={index}
               className="flex-shrink-0 bg-slate-50 border border-gray-200 rounded-md shadow-md p-2"

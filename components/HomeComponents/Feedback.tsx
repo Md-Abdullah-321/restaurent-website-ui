@@ -1,14 +1,19 @@
 "use client";
 import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
+import { FeedbackTypes } from "@/db/FeedBack";
 import { useEffect, useState } from "react";
 
-export default function ReviewsCarousel({ heading, headingPosition, reviews }: any) {
+export default function ReviewsCarousel({ heading, headingPosition, reviews }: {
+  heading: string;
+  headingPosition: string;
+  reviews: FeedbackTypes[];
+}) {
   const [itemWidth, setItemWidth] = useState("100%"); 
 
   // Update item width based on screen size
@@ -29,7 +34,6 @@ export default function ReviewsCarousel({ heading, headingPosition, reviews }: a
     };
   }, []);
 
-  console.log(reviews);
   
   return (
     <div className="w-full py-8 m-4 md:container mx-auto">
@@ -43,7 +47,7 @@ export default function ReviewsCarousel({ heading, headingPosition, reviews }: a
         </CarouselPrevious>
 
         <CarouselContent className="flex gap-4 transition-transform">
-          {reviews?.map((review: any, index: number) => (
+          {reviews?.map((review: FeedbackTypes, index: number) => (
             <CarouselItem
               key={index}
               className="flex-shrink-0 bg-slate-50 border border-gray-200 rounded-md shadow-md px-4 py-8"
