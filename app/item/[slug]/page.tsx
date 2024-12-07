@@ -13,17 +13,17 @@ import { IoMdArrowBack } from "react-icons/io";
 export default function FoodItem() {
   const { slug } = useParams();
   const router = useRouter();
-  const [item, setItem] = useState<FoodTypes | null>(null);
+  const [item, setItem] = useState<FoodTypes>();
   const [relatedFoods, setRelatedFoods] = useState<FoodTypes[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (slug) {
       // Fetch item and related foods
-      const fetchedItem : any = getItemById(parseInt(slug as string));
+      const fetchedItem = getItemById(parseInt(slug as string));
       if (fetchedItem) {
         setItem(fetchedItem);
-        const relatedItems: any = getRelatedFoodsById(fetchedItem.relatedFoods);
+        const relatedItems = getRelatedFoodsById(fetchedItem.relatedFoods);
         setRelatedFoods(relatedItems);
       } else {
         router.push("/404");
