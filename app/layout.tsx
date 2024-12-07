@@ -1,3 +1,6 @@
+import AnnouncementBar from "@/components/HomeComponents/AnnouncementBar";
+import Footer from "@/components/SharedComponents/footer";
+import Header from "@/components/SharedComponents/header";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -28,7 +31,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <AnnouncementBar/>
+        <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

@@ -5,18 +5,24 @@
  * Date: 07/12/2024
  */
 
-import AnnouncementBar from "@/components/HomeComponents/AnnouncementBar";
+import FAQ from "@/components/HomeComponents/FAQ";
+import ReviewsCarousel from "@/components/HomeComponents/Feedback";
 import HeroSection from "@/components/HomeComponents/HeroSection";
+import MealPlans from "@/components/HomeComponents/MealPlans";
 import SimpleGoodFood from "@/components/HomeComponents/SimpleGoodFood";
-import Header from "@/components/SharedComponents/header";
+import FoodCarousel from "@/components/SharedComponents/foodCarousel";
+import { Feedbacks } from "@/db/FeedBack";
+import { FoodItems } from "@/db/Food";
 
 export default function Home() {
 return (
   <div>
-    <AnnouncementBar/>
-    <Header/>
     <HeroSection/>
     <SimpleGoodFood/>
+    <FoodCarousel heading="Popular Foods" headingPosition="text-start" foodItems={FoodItems} />
+    <MealPlans/>
+    <FAQ/>
+    <ReviewsCarousel heading="Feedbacks" headingPosition="text-center" reviews={Feedbacks} />
   </div>
 );
 }
