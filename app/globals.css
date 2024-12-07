@@ -77,3 +77,29 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Smooth Scrolling Effect  */
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* ScrollBar CSS  */
+::-webkit-scrollbar {
+  width: 0.5vw;
+  background: #222;
+}
+::-webkit-scrollbar-thumb {
+  background: -webkit-linear-gradient(transparent, #2ecc71);
+  background: linear-gradient(transparent, #2ecc71);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: -webkit-linear-gradient(transparent, #193d80);
+  background: linear-gradient(transparent, #193d80);
+}

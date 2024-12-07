@@ -36,12 +36,12 @@ export default function ReviewsCarousel({ heading, headingPosition, reviews }: {
 
   
   return (
-    <div className="w-full py-8 m-4 md:container mx-auto">
+    <div className="w-full py-8 m-4 md:container mx-auto relative">
       {/* Section Heading */}
       <h2 className={`text-2xl font-bold text-gray-800 mb-3 sm:mb-6 ${headingPosition}`}>{heading}</h2>
 
       {/* Carousel Wrapper */}
-      <Carousel className="relative overflow-hidden">
+      <Carousel className="relative sm:-mr-[calc(50vw-50%)]">
         <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white">
           ❮
         </CarouselPrevious>
