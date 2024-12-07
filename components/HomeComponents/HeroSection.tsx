@@ -5,11 +5,23 @@
  * Date: 07/12/2024
  */
 
+"use client";
+
 import HeroBackgroundImage from "@/public/Hero_section_bg.png";
 import HeroRightImage from "@/public/hero_section_right_image.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Image from "next/image";
+import { useEffect } from "react";
+
+
 
 export default function HeroSection() {
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+    });
+  }, [])
   return (
     <div className="relative w-full h-[550px]">
       {/* Background Image */}
@@ -23,12 +35,12 @@ export default function HeroSection() {
       <div className="absolute inset-0 flex items-center container mx-auto px-6">
         {/* Left Content */}
         <div className="flex-1 text-left space-y-6">
-          <h2 className="text-5xl lg:text-7xl font-bold text-gray-800 leading-snug">
+          <h2 className="text-5xl lg:text-7xl font-bold text-gray-800 leading-snug" data-aos="fade-right" data-aos-delay="100">
             Keep track of <br />
             <span className="text-green-700">Fitness Goal</span>
           </h2>
-          <p className="text-lg text-gray-600">Order on Simply Good Food</p>
-          <button className="flex items-center px-6 py-3 text-white bg-orange-500 rounded-md hover:bg-orange-600 transition duration-300">
+          <p data-aos="fade-right" data-aos-delay="200" className="text-lg text-gray-600">Order on Simply Good Food</p>
+          <button data-aos="fade-up" data-aos-delay="500" className="flex items-center px-6 py-3 text-white bg-orange-500 rounded-md hover:bg-orange-600 transition duration-300">
             Explore Menu 
             <span className="ml-2 text-xl">↗</span>
           </button>
@@ -42,6 +54,7 @@ export default function HeroSection() {
               src={HeroRightImage}
               alt="Healthy Food"
               className="w-[85%] h-[85%] rounded-full object-cover"
+              data-aos="zoom-in"
             />
             {/* Navigation Buttons */}
             <button className="absolute left-0 transform -translate-x-[110%] bg-white border border-gray-300 rounded-full py-1 px-3 hover:bg-gray-100">

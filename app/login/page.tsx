@@ -1,10 +1,3 @@
-/**
- * Title: Login Page
- * Description: Login Page - Where users can login with their credentials.
- * Author: Md Abdullah
- * Date: 07/12/2024
- */
-
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -18,8 +11,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import BackgroundImage from "@/public/chicken_lolipop.jpg";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Login() {
@@ -28,9 +23,11 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
+  const { data: session, status } = useSession(); 
+  const router = useRouter();
 
   // Handle form submission
-  const handleSubmit : React.FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
     if (!email || !password) {
@@ -38,13 +35,28 @@ export default function Login() {
       return;
     }
     setError("");
-    
-    // Perform login action (this can be an API call)
-    console.log("Logging in with", email, password, rememberMe);
 
-    // Optionally, redirect after successful login
-    // router.push("/dashboard");
+    // Perform login using NextAuth
+    const res = await signIn("credentials", {
+      redirect: false, 
+      email,
+      password,
+    });
+
+    if (res?.error) {
+      setError("Invalid email or password.");
+    } else if (res?.ok) {
+      router.push("/dashboard"); 
+    }
   };
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  if (session) {
+    router.push("/dashboard");
+  }
 
   return (
     <div className="w-full h-[75vh] sm:h-screen relative">

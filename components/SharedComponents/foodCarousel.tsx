@@ -14,6 +14,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { FoodTypes } from "@/db/Food";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -28,6 +30,9 @@ export default function FoodCarousel({ heading, headingPosition, foodItems }: {
 
   // Update item width based on screen size
   useEffect(() => {
+    AOS.init({
+      duration: 500,
+    });
     const updateItemWidth = () => {
       const width = window.innerWidth;
       if (width < 640) {
@@ -49,10 +54,10 @@ export default function FoodCarousel({ heading, headingPosition, foodItems }: {
   return (
     <div className="w-full py-8 px-2 my-10 h-[600px] md:container md:mx-auto relative">
       {/* Section Heading */}
-      <h2 className={`text-3xl font-bold text-gray-800 mb-3 sm:mb-6 ml-0 sm:ml-10 ${headingPosition}`}>{heading}</h2>
+      <h2 className={`text-3xl font-bold text-gray-800 mb-3 sm:mb-6 ml-0 sm:ml-10 ${headingPosition}`} data-aos="fade-up">{heading}</h2>
 
       {/* Carousel Wrapper */}
-      <Carousel className="relative sm:-mr-[calc(50vw-50%)]">
+      <Carousel className="relative sm:-mr-[calc(50vw-50%)]" data-aos="fade-left">
         <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white">
           ❮
         </CarouselPrevious>

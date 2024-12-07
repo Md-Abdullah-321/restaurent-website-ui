@@ -59,7 +59,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="w-full h-[150vh] relative">
+    <div className="w-full h-[135vh] relative">
       {/* Background Image */}
       <Image
         src={BackgroundImage}

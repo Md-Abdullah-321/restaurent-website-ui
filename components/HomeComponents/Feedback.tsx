@@ -7,7 +7,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { FeedbackTypes } from "@/db/FeedBack";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
+
 
 export default function ReviewsCarousel({ heading, headingPosition, reviews }: {
   heading: string;
@@ -18,6 +21,9 @@ export default function ReviewsCarousel({ heading, headingPosition, reviews }: {
 
   // Update item width based on screen size
   useEffect(() => {
+    AOS.init({
+      duration: 500,
+    })
     const updateItemWidth = () => {
       const width = window.innerWidth;
       if (width < 640) {
@@ -38,10 +44,10 @@ export default function ReviewsCarousel({ heading, headingPosition, reviews }: {
   return (
     <div className="w-full py-8 m-4 md:container mx-auto relative">
       {/* Section Heading */}
-      <h2 className={`text-2xl font-bold text-gray-800 mb-3 sm:mb-6 ${headingPosition}`}>{heading}</h2>
+      <h2 className={`text-2xl font-bold text-gray-800 mb-3 sm:mb-6 ${headingPosition}`} data-aos="fade-up">{heading}</h2>
 
       {/* Carousel Wrapper */}
-      <Carousel className="relative sm:-mr-[calc(50vw-50%)]">
+      <Carousel className="relative sm:-mr-[calc(50vw-50%)]" data-aos="fade-left" data-aos-delay="200">
         <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white">
           ❮
         </CarouselPrevious>
