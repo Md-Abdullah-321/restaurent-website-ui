@@ -6,7 +6,7 @@
  */
 
 import GoodFoodOneIcon from "@/public/goodfoodOne.png";
-import GoodFoodThreeIcon from "@/public/goodfoodThree.png";
+import GoodFoodThreeIcon from "@/public/goodfoodthree.png";
 import GoodFoodTwoIcon from "@/public/goodfoodtwo.png";
 import Image from "next/image";
 
