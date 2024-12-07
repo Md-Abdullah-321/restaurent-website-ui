@@ -33,9 +33,9 @@ export default function Header() {
     <header className="w-full bg-white border-b-2 border-gray-200">
       <div className="container mx-auto flex items-center justify-between px-6 py-2">
         {/* Logo */}
-        <div className="flex-shrink-0">
+        <Link href={"/"} className="flex-shrink-0 cursor-pointer">
           <Image src={logo} alt="logo" width={500} height={500} className="w-20 h-20" />
-        </div>
+        </Link>
 
         {/* Mobile Hamburger Menu */}
         <div className="lg:hidden">

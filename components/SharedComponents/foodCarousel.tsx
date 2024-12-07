@@ -47,12 +47,12 @@ export default function FoodCarousel({ heading, headingPosition, foodItems }: {
   }, []);
 
   return (
-    <div className="w-full py-8 px-2 my-10 h-[600px] md:container md:mx-auto">
+    <div className="w-full py-8 px-2 my-10 h-[600px] md:container md:mx-auto relative">
       {/* Section Heading */}
-      <h2 className={`text-2xl font-bold text-gray-800 mb-3 sm:mb-6 ${headingPosition}`}>{heading}</h2>
+      <h2 className={`text-3xl font-bold text-gray-800 mb-3 sm:mb-6 ml-0 sm:ml-10 ${headingPosition}`}>{heading}</h2>
 
       {/* Carousel Wrapper */}
-      <Carousel className="relative overflow-hidden">
+      <Carousel className="relative sm:-mr-[calc(50vw-50%)]">
         <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white">
           ❮
         </CarouselPrevious>
@@ -73,7 +73,7 @@ export default function FoodCarousel({ heading, headingPosition, foodItems }: {
                 className="w-full h-60 object-contain mb-2 rounded-md"
               />
               <p className="text-sm text-[#f39c12]"><span style={{"fontSize":"125%", "color": "#f39c12"}}>★</span>{food.rating}/5</p>
-              <Link href={`/item/${food.id}`} className="text-lg font-semibold text-gray-800 my-4">
+              <Link href={`/item/${food.id}`} className="text-lg font-semibold text-gray-800 my-4 hover:underline">
                 {food.name}
               </Link>
               <p className="font-semibold text-gray-600">${food.price.toFixed(2)}</p>
@@ -88,7 +88,7 @@ export default function FoodCarousel({ heading, headingPosition, foodItems }: {
           ))}
         </CarouselContent>
 
-        <CarouselNext className="absolute right-0 top-1/2 transform md:-translate-y-1/2 z-10 bg-white">
+        <CarouselNext className="absolute right-10 top-1/2 transform md:-translate-y-1/2 z-10 bg-white">
           ❯
         </CarouselNext>
       </Carousel>
