@@ -38,7 +38,7 @@ export default function Header() {
         </div>
 
         {/* Mobile Hamburger Menu */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <button onClick={toggleSidebar} className="text-gray-600">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@ export default function Header() {
         </div>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex">
+        <nav className="hidden lg:flex">
           <ul className="flex space-x-4 text-gray-600">
             {Menu.map((item, index) => (
               <li key={item.title} className="flex space-x-4">
@@ -75,7 +75,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden lg:flex items-center space-x-4">
           <Link href={"/login"} className="px-4 py-2 text-green-600 border border-green-600 rounded-md hover:bg-green-50">
             Log in
           </Link>

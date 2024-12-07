@@ -23,7 +23,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 flex items-center container mx-auto px-6">
         {/* Left Content */}
         <div className="flex-1 text-left space-y-6">
-          <h2 className="text-7xl font-bold text-gray-800 leading-snug">
+          <h2 className="text-5xl lg:text-7xl font-bold text-gray-800 leading-snug">
             Keep track of <br />
             <span className="text-green-700">Fitness Goal</span>
           </h2>
