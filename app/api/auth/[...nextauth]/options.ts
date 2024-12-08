@@ -1,18 +1,5 @@
-import bcrypt from "bcryptjs";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
-// Simulating localStorage as a "database"
-const getUsers = () => {
-  const users = localStorage.getItem("users");
-  return users ? JSON.parse(users) : [];
-};
-
-const saveUser = (user: any) => {
-  const users = getUsers();
-  users.push(user);
-  localStorage.setItem("users", JSON.stringify(users));
-};
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -24,21 +11,19 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        console.log("Credentials:", credentials);
         if (!credentials?.email || !credentials?.password) {
           return null;
         }
 
-        // Check if the user exists in localStorage (simulated DB)
-        const users = getUsers();
-        const user = users.find(
-          (user: any) => user.email === credentials.email
-        );
+        // Fetch user from database (e.g., PostgreSQL)
+        // const user = getUserByEmail(credentials.email);
 
-        if (user && bcrypt.compareSync(credentials.password, user.password)) {
-          return { id: user.email, email: user.email };
-        } else {
-          return null;
-        }
+        // if (user && verifyPassword(credentials.password, user.password)) {
+        return { id: credentials.email, email: credentials.email };
+        // } else {
+        // return null;
+        // }
       },
     }),
   ],
@@ -51,18 +36,9 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-        token.email = user.email;
-      }
       return token;
     },
     async session({ session, token }) {
-      if (token && session?.user) {
-        session.user.id = token.id as string;
-        session.user.email = token.email as string;
-      }
-
       return session;
     },
   },

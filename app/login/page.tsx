@@ -38,15 +38,17 @@ export default function Login() {
 
     // Perform login using NextAuth
     const res = await signIn("credentials", {
-      redirect: false, 
+      redirect: false,
       email,
       password,
     });
 
+    console.log(res?.error);
     if (res?.error) {
+      
       setError("Invalid email or password.");
     } else if (res?.ok) {
-      router.push("/dashboard"); 
+      router.push("/"); 
     }
   };
 
@@ -55,8 +57,9 @@ export default function Login() {
   }
 
   if (session) {
-    router.push("/dashboard");
+    window.location.href = "/";
   }
+  
 
   return (
     <div className="w-full h-[75vh] sm:h-screen relative">

@@ -18,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import BackgroundImage from "@/public/chicken_lolipop.jpg";
+import bcrypt from 'bcryptjs';
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -32,31 +33,62 @@ export default function Signup() {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  // Handle form submission with type definition
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
+  // Handle form submission
+ const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+  e.preventDefault();
 
-    // Basic validation
-    if (!username || !email || !contactNo || !permanentAddress || !password || !confirmPassword) {
-      setError("Please fill in all fields.");
+  // Email regex for validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    setError("Invalid email format.");
+    return;
+  }
+
+  // Password strength check
+  if (password.length < 8) {
+    setError("Password must be at least 8 characters long.");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    setError("Passwords do not match.");
+    return;
+  }
+
+  setError("");
+
+  try {
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    if (users.find((user : { email: string; }) => user.email === email)) {
+      alert("Email already exists!");
       return;
     }
 
-    // Check if password and confirm password match
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    const userCredentials = {
+      username,
+      email,
+      contactNo,
+      permanentAddress,
+      password: hashedPassword,
+    };
 
-    // Clear error message if valid
-    setError("");
+    users.push(userCredentials);
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("User registered successfully!");
 
-    // Perform registration action (this can be an API call)
-    console.log("Registering user with", username, email, contactNo, permanentAddress, password);
+    // Clear form fields
+    setUsername("");
+    setEmail("");
+    setContactNo("");
+    setPermanentAddress("");
+    setPassword("");
+    setConfirmPassword("");
+  } catch (err) {
+    setError("An unexpected error occurred.");
+  }
+};
 
-    // Optionally, redirect after successful registration
-    // router.push("/dashboard");
-  };
 
   return (
     <div className="w-full h-[135vh] relative">
